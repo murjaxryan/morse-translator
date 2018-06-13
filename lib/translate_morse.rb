@@ -1,3 +1,5 @@
+require 'character'
+
 class TranslateMorse
   attr_reader :text
   def initialize(text)
@@ -13,28 +15,17 @@ class TranslateMorse
     morse_characters(word).compact.join(' ')
   end
 
-  def parse_character(character)
-    return unless character.length == 1
-
-    if is_letter?(character)
+  def parse_character(string)
+    character = Character.new(string)
+    if character.is_letter?
       letter_translation_table[character.to_sym]
-    elsif is_number?(character)
+    elsif character.is_number?
       number_translation_table[character.to_i]
     end
   end
 
   def morse_characters(word)
     word.downcase.split('').map{ |character| parse_character(character) }
-  end
-
-  def is_letter?(character)
-    result = (character =~ /[A-Za-z]/)
-    result == 0
-  end
-
-  def is_number?(character)
-    result = (character =~ /[0-9]/)
-    result == 0
   end
 
   def letter_translation_table

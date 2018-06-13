@@ -62,45 +62,6 @@ describe TranslateMorse do
     end
   end
 
-  describe 'is_number?' do
-    context 'charcater is letter' do
-      it 'is false' do
-        character = 'a'
-        expect(translate_morse.is_number?(character)).to eq(false)
-      end
-    end
-
-    context 'character is number' do
-      it 'is true' do
-        character = '2'
-        expect(translate_morse.is_number?(character)).to eq(true)
-      end
-    end
-
-    context 'character is non-alphanumeric' do
-      it 'is false' do
-        character = '!'
-        expect(translate_morse.is_number?(character)).to eq(false)
-      end
-    end
-  end
-
-  describe 'is_letter?' do
-    context 'charcater is letter' do
-      it 'is true' do
-        character = 'a'
-        expect(translate_morse.is_letter?(character)).to eq(true)
-      end
-    end
-
-    context 'character is number' do
-      it 'is false' do
-        character = '2'
-        expect(translate_morse.is_letter?(character)).to eq(false)
-      end
-    end
-  end
-
   describe 'parse_character' do
     context 'character is letter' do
       it 'returns morse translation' do
