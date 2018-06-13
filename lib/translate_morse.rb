@@ -48,4 +48,24 @@ class TranslateMorse
       '-----',
     ]
   end
+
+  def is_letter?(character)
+    result = (character =~ /[A-Za-z]/)
+    result == 0
+  end
+
+  def is_number?(character)
+    result = (character =~ /[0-9]/)
+    result == 0
+  end
+
+  def parse_character(character)
+    return unless character.length == 1
+
+    if is_letter?(character)
+      letter_translation_table[character.to_sym]
+    elsif is_number?(character)
+      number_translation_table[character.to_i]
+    end
+  end
 end
