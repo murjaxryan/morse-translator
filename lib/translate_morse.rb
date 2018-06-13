@@ -24,7 +24,16 @@ class TranslateMorse
   end
 
   def morse_characters(word)
-    word.downcase.split('').map{ |character| parse_character(character) }
+    character_array = characters_from_word(word)
+    parse_characters(character_array)
+  end
+
+  def parse_characters(character_array)
+    character_array.map{ |character| parse_character(character) }
+  end
+
+  def characters_from_word(word)
+    word.downcase.split('')
   end
 
   def letter_translation_table

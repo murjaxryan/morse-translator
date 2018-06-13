@@ -137,4 +137,19 @@ describe TranslateMorse do
       expect(translate_morse.parse_text).to eq(translation)
     end
   end
+
+  describe 'characters_from_word' do
+    it 'returns array of lowercase characters from word' do
+      word = 'Ruby'
+      expect(translate_morse.characters_from_word(word)).to eq(['r', 'u', 'b', 'y'])
+    end
+  end
+
+  describe 'parse_characters' do
+    it 'translates array of characters to morse' do
+      character_array = ['r', 'u', 'b', 'y']
+      translation = ['.-.', '..-', '-...', '-.--']
+      expect(translate_morse.parse_characters(character_array)).to eq(translation)
+    end
+  end
 end
