@@ -137,4 +137,43 @@ describe TranslateMorse do
       end
     end
   end
+
+  describe 'parse_word' do
+    it 'returns morse translation of word' do
+      word = 'ruby'
+      translation = '.-. ..- -... -.--'
+      expect(translate_morse.parse_word(word)).to eq(translation)
+    end
+
+    context 'empty string' do
+      it 'is nil' do
+        word = ''
+        expect(translate_morse.parse_word(word)).to eq(nil)
+      end
+    end
+
+    context 'word contains non-alphanumeric characters' do
+      it 'strips non-alphanumeric characters' do
+        word = 'Ru$by!'
+        translation = '.-. ..- -... -.--'
+        expect(translate_morse.parse_word(word)).to eq(translation)
+      end
+    end
+  end
+
+  describe 'morse_characters' do
+    it 'returns array of morse translated characters' do
+      word = 'ruby'
+      morse_characters = ['.-.', '..-', '-...', '-.--']
+      expect(translate_morse.morse_characters(word)).to eq(morse_characters)
+    end
+  end
+
+  describe 'parse_text' do
+    it 'translates text into morse code with words separated by slash' do
+      text = 'Ruby is fun.'
+      translation = '.-. ..- -... -.-- / .. ... / ..-. ..- -.'
+      expect(translate_morse.parse_text).to eq(translation)
+    end
+  end
 end
