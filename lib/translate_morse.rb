@@ -11,7 +11,6 @@ class TranslateMorse
   end
 
   def parse_word(word)
-    return unless word.length > 0
     morse_characters(word).compact.join(' ')
   end
 

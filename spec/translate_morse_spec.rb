@@ -107,9 +107,9 @@ describe TranslateMorse do
     end
 
     context 'empty string' do
-      it 'is nil' do
+      it 'is empty string' do
         word = ''
-        expect(translate_morse.parse_word(word)).to eq(nil)
+        expect(translate_morse.parse_word(word)).to eq('')
       end
     end
 
